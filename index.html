@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Doces Amoranna – Doces artesanais</title>
+
+  <!-- SEO Básico -->
+    <meta name="description" content="Doces Amoranna – doces artesanais feitos com carinho. Brigadeiros gourmet, bolos no pote, trufas e encomendas para eventos." />
+    <meta name="theme-color" content="#975010" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Doces Amoranna" />
+    <meta property="og:description" content="Doces artesanais feitos com carinho para adoçar seus melhores momentos." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="img/preview.jpg" />
+    <script src="https://kit.fontawesome.com/2fcbf6742d.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* ===========================
+       Variáveis (cores + espaçamentos)
+       =========================== */
+    :root{
+      --primary: #975010;       /* cor principal (marrom dourado) */
+      --primary-dark: #975010;  /* mesma cor por paleta limitada */
+      --bg-soft: #E6DFD6;       /* bege claro */
+      --accent: #FFFFFF;        /* branco */
+      --marrom: #975010;
+      --texto: #975010;
+      --branco: #FFFFFF;
+      --sombra: 0 10px 25px rgba(151,80,16,.08);
+      --radius: 16px;
+      --container: 1100px;
+      --gap: 24px;
+    }
+
+    /* Reset simples */
+    *{ box-sizing: border-box; }
+    html, body{ margin:0; padding:0; }
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--texto);
+      background: var(--bg-soft);
+      line-height: 1.6;
+    }
+    img{ max-width:100%; display:block; }
+    a{ color: inherit; }
+
+    /* Container */
+    .container{
+      max-width: var(--container);
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+
+    /* Header / Hero */
+    header.hero{
+      position: relative;
+      padding: 80px 0 60px;
+      /* usei gradiente entre marrom e bege suave */
+      background: linear-gradient(135deg, var(--primary), var(--bg-soft));
+      color: var(--branco);
+      text-align: center;
+      overflow: hidden;
+    }
+    header.hero .brand{
+      font-weight: 800;
+      letter-spacing: .5px;
+      font-size: 14px;
+      opacity: .95;
+      text-transform: uppercase;
+      color: var(--branco);
+    }
+    header.hero h1{
+      font-size: clamp(28px, 6vw, 48px);
+      margin: 14px 0 8px;
+      color: var(--branco);
+    }
+    header.hero p.sub{
+      font-size: clamp(16px, 3.6vw, 20px);
+      opacity: .95;
+      margin: 0 auto 18px;
+      max-width: 700px;
+      color: var(--branco);
+    }
+
+    .logotop{
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+
+    .cta-wrap{
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      box-shadow: var(--sombra);
+    }
+    .btn-primary{
+      background: var(--primary);
+      color: var(--branco);
+    }
+    .btn-primary:hover{ transform: translateY(-1px); opacity:.95; }
+    .btn-ghost{
+      border: 2px solid rgba(255,255,255,.8);
+      color: var(--branco);
+      background: transparent;
+    }
+    .btn-ghost:hover{ background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+    /* Seções padrão */
+    section{
+      padding: 60px 0;
+    }
+    section h2{
+      font-size: clamp(22px, 4.5vw, 32px);
+      margin: 0 0 10px;
+      color: var(--marrom);
+      text-align: center;
+    }
+    section p.section-sub{
+      text-align: center;
+      margin: 0 auto;
+      max-width: 720px;
+      opacity: .85;
+    }
+
+    /* Sobre */
+    .about{
+      padding-top: 50px;
+    }
+    .about .card{
+      background: var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: clamp(18px, 3vw, 28px);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--gap);
+      align-items: center;
+    }
+    .about .text h3{
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: var(--marrom);
+    }
+    .about .text p{ margin: 0; color: var(--primary); }
+    .about .photo{
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--accent);
+    }
+    @media (max-width: 860px){
+      .about .card{ grid-template-columns: 1fr; }
+    }
+
+    /* Produtos (cards) */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--gap);
+      margin-top: 28px;
+    }
+    @media (max-width: 1100px){
+      .grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 780px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      background: var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover{
+      background-color: var(--bg-soft);
+      transition: all ease-in-out 0.3s;
+    }
+
+    .card .thumb{
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      width: 100%;
+    }
+    .card .body{
+      padding: 16px 16px 18px;
+    }
+    .card h3{
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: var(--marrom);
+    }
+    .card p{ margin: 0; opacity: .9; color: var(--primary); }
+
+    /* Diferenciais (chips) */
+    .badges{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .badge{
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 12px 36px;
+      box-shadow: var(--sombra);
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .badge:hover{
+      background-color: var(--primary);
+      color: var(--branco);
+      transition: all ease-in-out 0.5s;
+    }
+
+    /* Links/contatos */
+    .links{
+      max-width: 520px;
+      margin: 24px auto 0;
+    }
+    .links a{
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      background: var(--primary);
+      color: var(--branco);
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      box-shadow: var(--sombra);
+      transition: transform .06s ease, background .2s ease;
+    }
+    .links a:hover{ background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* Footer */
+    footer{
+      padding: 10px 0 20px;
+      text-align: center;
+      color: var(--branco);
+      font-weight: bolder;
+      font-size: 14px;
+      background-color: var(--primary);
+    }
+    footer .credit{ opacity: .85; }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       HERO       <div class="brand">Doces Amoranna</div>
+
+       =========================== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <img class="logotop" src="src/logonormal.jpeg" alt="Logo Amoranna">
+      <h1>O sabor que conquista corações ❤️</h1>
+      <p class="sub">Doces artesanais feitos com carinho para adoçar seus melhores momentos.</p>
+
+      <div class="cta-wrap">
+        <!-- Troque pelo seu número com DDI/DDD: 55DDNUMERO (ex.: 5562999999999) -->
+        <a class="btn btn-primary" href="https://wa.me/62982120055?text=Olá%20Amoranna!%20Quero%20fazer%20um%20pedido%20🍬" target="_blank" rel="noopener">
+           Peça agora pelo WhatsApp <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a class="btn btn-ghost" href="#produtos">👉 Ver catálogo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===========================
+       SOBRE
+       =========================== -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="card">
+        <div class="text">
+          <h2>Quem Somos</h2>
+          <p class="section-sub">Na <strong>Doces Amoranna</strong>, acreditamos que cada doce conta uma história. Produzimos receitas caseiras, feitas à mão, com todo o cuidado que você merece — perfeitas para presentear, celebrar e saborear.</p>
+          <br/>
+          <h3>Feitos com amor, pensados pra você</h3>
+          <p>Selecionamos ingredientes frescos, priorizamos o sabor e caprichamos nos detalhes. Do brigadeiro ao bolo no pote, nossa missão é adoçar seus momentos com qualidade e carinho.</p>
+        </div>
+        <!-- Troque a imagem por uma foto real (1080x810 recomendado) -->
+        <div class="photo">
+          <img src="src/geral.jpeg" alt="Doces artesanais Doces Amoranna" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PRODUTOS
+       =========================== -->
+  <section id="produtos">
+    <div class="container">
+      <h2>🍫 Nossos Doces</h2>
+      <p class="section-sub">Alguns dos favoritos por aqui — peça pelo WhatsApp e receba rapidinho!</p>
+
+      <div class="grid">
+        <!-- Card 1 -->
+        <article class="card">
+          <img class="thumb" src="src/caixa.jpeg" alt="Brigadeiros gourmet" loading="lazy" />
+          <div class="body">
+            <h3>Caixa c/4 Brigadeiros</h3>
+            <p>Uma seleção especial com 4 brigadeiros gourmet preparados artesanalmente. Ideal para presentear ou saborear em momentos especiais. 🎁✨</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <img class="thumb" src="src/morangodoamor.jpeg" alt="Morango do amor" loading="lazy" />
+          <div class="body">
+            <h3>Morango do Amor</h3>
+            <p>O clássico irresistível! Morangos frescos cobertos com uma camada crocante de açúcar caramelizado. Uma explosão de sabor e carinho em cada mordida. 🍓❤️</p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <img class="thumb" src="src/bombom.jpeg" alt="Bom bom de morango" loading="lazy" />
+          <div class="body">
+            <h3>Bom Bom de Morango</h3>
+            <p>Delicioso morango envolto em brigadeiro e finalizado com chocolate nobre. Uma combinação perfeita entre fruta e doce! 🍓🍫</p>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card">
+          <img class="thumb" src="src/copodafelicidade.jpeg" alt="Copo da Felicidade" loading="lazy" />
+          <div class="body">
+            <h3>Copo da Felicidade</h3>
+            <p>Camadas generosas de brigadeiro e morangos ou uvas, montados em um copo cheio de amor. Um doce que transborda sabor e alegria! 🥰🍰</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       DIFERENCIAIS
+       =========================== -->
+  <section id="diferenciais">
+    <div class="container">
+      <h2>✨ Por que escolher a Doces Amoranna?</h2>
+      <div class="badges">
+        <div class="badge">✅ Ingredientes frescos e selecionados</div>
+        <div class="badge">✅ Produção 100% artesanal</div>
+        <div class="badge">✅ Entregas rápidas na região</div>
+        <div class="badge">✅ Sabor que fideliza clientes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       LINKS / CONTATO (estilo Linktree)
+       =========================== -->
+  <section id="contato">
+    <div class="container">
+      <h2>📲 Onde nos encontrar</h2>
+      <p class="section-sub">Fale com a gente, faça seu pedido ou acompanhe as novidades:</p>
+
+      <div class="links">
+        <!-- Substitua os links abaixo -->
+        <a href="https://wa.me/SEUNUMERO?text=Olá%20Amoranna!%20Quero%20fazer%20um%20pedido%20🍬" target="_blank" rel="noopener">WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://instagram.com/SEUPERFIL" target="_blank" rel="noopener">Instagram <i class="fa-brands fa-instagram"></i></a>
+        <a href="https://maps.google.com/?q=LOCALIZACAO" target="_blank" rel="noopener">Localização <i class="fa-solid fa-location-dot"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+       =========================== -->
+  <footer>
+    <div class="container">
+      <p>🍬 Doces Amoranna – feitos com amor para você 💖</p>
+      <p class="credit">Desenvolvido por Digitalize Agência 🚀</p>
+    </div>
+  </footer>
+
+</body>
+</html>
